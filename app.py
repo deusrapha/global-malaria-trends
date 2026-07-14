@@ -12,30 +12,94 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for a professional, premium interface
+# Custom CSS for a crystal glassmorphism and medicinal theme
 st.markdown("""
 <style>
+    /* Import modern Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+    
+    /* Global style overrides */
+    html, body, [data-testid="stAppViewContainer"] {
+        font-family: 'Outfit', sans-serif !important;
+    }
+    
+    /* Crystal medicinal background */
     .main {
-        background-color: #f5f7f8;
+        background: linear-gradient(135deg, #e0f2f1 0%, #e0f7fa 100%) !important;
+        background-attachment: fixed !important;
     }
-    .stMetric {
-        background-color: #ffffff;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        border-left: 5px solid #003366;
+    
+    /* Sidebar glassmorphism */
+    section[data-testid="stSidebar"] {
+        background-color: rgba(255, 255, 255, 0.65) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
     }
-    .stMetric:nth-child(2) {
-        border-left-color: #800000;
+    
+    /* Header typography */
+    h1, h2, h3, h4, h5, h6 {
+        color: #0b4f6c !important; /* Medical Slate Blue */
+        font-weight: 700 !important;
     }
-    .stMetric:nth-child(3) {
-        border-left-color: #008080;
+    
+    /* Crystal cards for Streamlit metrics */
+    div[data-testid="stMetric"] {
+        background: rgba(255, 255, 255, 0.45) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04) !important;
+        border-left: 6px solid #009688 !important; /* Teal */
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    h1, h2, h3 {
-        color: #003366;
+    
+    div[data-testid="stMetric"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08) !important;
     }
-    .sidebar .sidebar-content {
-        background-color: #ffffff;
+    
+    /* Distinct colors for different metrics */
+    div[data-testid="stMetric"]:nth-child(2) {
+        border-left-color: #00acc1 !important; /* Cyan Medical */
+    }
+    div[data-testid="stMetric"]:nth-child(3) {
+        border-left-color: #43a047 !important; /* Clinical Sage Green */
+    }
+    
+    /* Container glassmorphism for tabs and plots */
+    .stTabs {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border-radius: 12px !important;
+        padding: 15px !important;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.03) !important;
+    }
+    
+    /* Styled tabs */
+    button[data-baseweb="tab"] {
+        color: #0b4f6c !important;
+        font-weight: 600 !important;
+        background-color: transparent !important;
+        border: none !important;
+        padding: 10px 20px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    button[data-baseweb="tab"]:hover {
+        color: #009688 !important;
+        background: rgba(255, 255, 255, 0.5) !important;
+        border-radius: 8px !important;
+    }
+    
+    button[data-baseweb="tab"][aria-selected="true"] {
+        color: #ffffff !important;
+        background-color: #009688 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -138,24 +202,26 @@ with tabs[0]:
             fig_temp = go.Figure()
             fig_temp.add_trace(go.Scatter(
                 x=temp_df['Year'], y=temp_df['Cases']/1e6,
-                name="Cases (Millions)", line=dict(color='teal', width=3),
+                name="Cases (Millions)", line=dict(color='#009688', width=3), # Medicinal Teal
                 mode='lines+markers'
             ))
             fig_temp.add_trace(go.Scatter(
                 x=temp_df['Year'], y=temp_df['Deaths']/1e3,
-                name="Deaths (Thousands)", line=dict(color='crimson', width=3),
+                name="Deaths (Thousands)", line=dict(color='#e06666', width=3), # Clinical Coral Red
                 yaxis="y2", mode='lines+markers'
             ))
             
             fig_temp.update_layout(
-                yaxis=dict(title=dict(text="Cases (Millions)", font=dict(color="teal")), tickfont=dict(color="teal")),
+                yaxis=dict(title=dict(text="Cases (Millions)", font=dict(color="#009688")), tickfont=dict(color="#009688")),
                 yaxis2=dict(
-                    title=dict(text="Deaths (Thousands)", font=dict(color="crimson")), 
-                    tickfont=dict(color="crimson"), anchor="x", overlaying="y", side="right"
+                    title=dict(text="Deaths (Thousands)", font=dict(color="#e06666")), 
+                    tickfont=dict(color="#e06666"), anchor="x", overlaying="y", side="right"
                 ),
                 legend=dict(x=0.01, y=0.99),
                 margin=dict(l=40, r=40, t=30, b=40),
-                height=450
+                height=450,
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)'
             )
             st.plotly_chart(fig_temp, use_container_width=True)
             
@@ -165,11 +231,13 @@ with tabs[0]:
             fig_bar = px.bar(
                 region_df, x="Year", y="No. of cases_median", color="WHO_Region",
                 barmode="group", labels={"No. of cases_median": "Cases (Median Estimate)"},
-                color_discrete_sequence=px.colors.qualitative.Safe
+                color_discrete_sequence=["#0b4f6c", "#009688", "#00acc1", "#43a047", "#81c784", "#26a69a"] # Medicinal Palette
             )
             fig_bar.update_layout(
                 margin=dict(l=40, r=40, t=30, b=40),
-                height=450
+                height=450,
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)'
             )
             st.plotly_chart(fig_bar, use_container_width=True)
 
@@ -191,13 +259,15 @@ with tabs[1]:
             color="log_cases",
             hover_name="Country",
             hover_data={"No. of cases_median": True, "No. of deaths_median": True},
-            color_continuous_scale=px.colors.sequential.Plasma,
+            color_continuous_scale=px.colors.sequential.Tealgrn, # Medicinal Teal-Green
             labels={'log_cases': 'Log(Cases + 1)'}
         )
         fig_map.update_layout(
-            geo=dict(showframe=False, showcoastlines=True, projection_type='equirectangular'),
+            geo=dict(showframe=False, showcoastlines=True, projection_type='equirectangular', bgcolor='rgba(0,0,0,0)'),
             height=600,
-            margin=dict(l=0, r=0, t=20, b=0)
+            margin=dict(l=0, r=0, t=20, b=0),
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)'
         )
         st.plotly_chart(fig_map, use_container_width=True)
         st.info("The map is plotted on a logarithmic scale ($y = \\log(x+1)$) to highlight differences across regions and reveal transmission boundaries.")
@@ -227,9 +297,14 @@ with tabs[2]:
                     "log_cases": "Log(Cases + 1)",
                     "log_deaths": "Log(Deaths + 1)"
                 },
-                color_discrete_sequence=px.colors.qualitative.Set1
+                color_discrete_sequence=["#0b4f6c", "#009688", "#00acc1", "#43a047", "#81c784", "#26a69a"] # Medicinal Palette
             )
-            fig_scatter.update_layout(height=500, margin=dict(l=40, r=40, t=30, b=40))
+            fig_scatter.update_layout(
+                height=500, 
+                margin=dict(l=40, r=40, t=30, b=40),
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)'
+            )
             st.plotly_chart(fig_scatter, use_container_width=True)
             
         with col2:
@@ -250,12 +325,17 @@ with tabs[2]:
                 fig_heat = px.imshow(
                     corr_matrix,
                     text_auto=".3f",
-                    color_continuous_scale="RdBu",
+                    color_continuous_scale="Tealrose", # Medicinal Teal to Rose
                     zmin=-1.0, zmax=1.0,
                     labels=dict(color="Correlation"),
                     x=anal_cols, y=anal_cols
                 )
-                fig_heat.update_layout(height=400, margin=dict(l=20, r=20, t=20, b=20))
+                fig_heat.update_layout(
+                    height=400, 
+                    margin=dict(l=20, r=20, t=20, b=20),
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)'
+                )
                 st.plotly_chart(fig_heat, use_container_width=True)
             else:
                 st.warning("Insufficient observations to compute correlation matrix.")
