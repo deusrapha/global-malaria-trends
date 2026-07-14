@@ -115,10 +115,10 @@ else:
 
 # Tabs Layout
 tabs = st.tabs([
-    "📈 Temporal & Regional Trends", 
-    "🗺️ Geographic Distribution", 
-    "🔬 Bivariate & Correlation Analysis",
-    "📄 Filtered Data Inspector"
+    "Temporal & Regional Trends", 
+    "Geographic Distribution", 
+    "Bivariate & Correlation Analysis",
+    "Filtered Data Inspector"
 ])
 
 # ---- TAB 1: Trends ----
