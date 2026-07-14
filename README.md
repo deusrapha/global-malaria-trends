@@ -1,6 +1,6 @@
 # Global Malaria Incidence and Deaths Analysis (DS30)
 
-**Deus Tumusiime** (Reg. No: **2025/HD05/26375U**).
+This directory contains the complete take-home examination deliverables for student **Rapha Deus Tumusiime** (Reg. No: **2025/HD05/26375U**, Student Position: **30**).
 
 ## Project Overview
 This project provides an end-to-end data analytics and visualization pipeline for the WHO estimated malaria numbers dataset (covering 107 countries over 2010–2017). It includes:
