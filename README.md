@@ -1,6 +1,9 @@
 # Global Malaria Incidence and Deaths Analysis 
 
-Name **Rapha Deus Tumusiime** (Reg. No: **2025/HD05/26375U**).
+**Deus Tumusiime** (Reg. No: **2025/HD05/26375U**).
+- `MCS 7227`: DATA ANALYTICS & VISUALIZATION                                                                                                                                               
+- `By`: JJINGO DAUDI PHD, & HENRY MUTEGEKI
+- MAKERERE UNIVERSITY
 
 ## Project Overview
 This project provides an end-to-end data analytics and visualization pipeline for the WHO estimated malaria numbers dataset (covering 107 countries over 2010–2017). It includes:
@@ -32,8 +35,11 @@ This project provides an end-to-end data analytics and visualization pipeline fo
 - **Operating System**: Windows
 
 ### Deployed Environment (Streamlit Community Cloud)
-- **Deployment URL**: https://global-malaria-trends.streamlit.app/
+- **Deployment URL**: https://global-malaria-trends-4vhcxue7bwn4dhgt9tr4k3.streamlit.app
 - **Hosting Platform**: Streamlit Community Cloud (connected to the GitHub repository main branch)
+
+### Repo on Github (Public Repository)
+- **Repository URL**: https://github.com/deusrapha/global-malaria-trends
 
 ---
 
