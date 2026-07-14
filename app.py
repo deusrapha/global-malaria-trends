@@ -149,9 +149,9 @@ with tabs[0]:
             ))
             
             fig_temp.update_layout(
-                yaxis=dict(title="Cases (Millions)", titlefont=dict(color="teal"), tickfont=dict(color="teal")),
+                yaxis=dict(title=dict(text="Cases (Millions)", font=dict(color="teal")), tickfont=dict(color="teal")),
                 yaxis2=dict(
-                    title="Deaths (Thousands)", titlefont=dict(color="crimson"), 
+                    title=dict(text="Deaths (Thousands)", font=dict(color="crimson")), 
                     tickfont=dict(color="crimson"), anchor="x", overlaying="y", side="right"
                 ),
                 legend=dict(x=0.01, y=0.99),
