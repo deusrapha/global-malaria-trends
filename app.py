@@ -56,9 +56,8 @@ st.sidebar.title("Dashboard Controls")
 st.sidebar.markdown("""
 <div style='background-color:#f0f2f6; padding:10px; border-radius:5px; margin-bottom:15px;'>
     <h4 style='margin:0; color:#003366;'>Student Info</h4>
-    <p style='margin:0; font-size:12px;'><b>Name:</b> Rapha Deus Tumusiime</p>
+    <p style='margin:0; font-size:12px;'><b>Name:</b> Deus Tumusiime</p>
     <p style='margin:0; font-size:12px;'><b>Reg. No:</b> 2025/HD05/26375U</p>
-    <p style='margin:0; font-size:12px;'><b>Position:</b> 30</p>
     <p style='margin:0; font-size:12px;'><b>Dataset:</b> DS30 (Malaria)</p>
 </div>
 """, unsafe_allow_html=True)
@@ -88,7 +87,7 @@ filtered_df = df[
 ]
 
 # ----------------- MAIN PANEL -----------------
-st.title("🦟 Global Malaria Incidence and Deaths (2010–2017)")
+st.title(" Global Malaria Incidence and Deaths (2010–2017)")
 st.markdown("Interactive exploration dashboard of country-level malaria estimates across WHO regions.")
 
 # KPI Metric Cards
